@@ -1,24 +1,106 @@
 <h1>Users</h1>
-<!-- <a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a> -->
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  create employ id
+<!-- Button trigger modal -->
+
+<button
+  type="button"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#exampleModal"
+>
+  Add User
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        ...
+        <span
+          id="form"
+          action=""
+          method="POST"
+          role="form"
+          onsubmit="return formSubmit()"
+        >
+          <div class="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="name"
+            />
+            <div class="invalid-feedback">
+              your name must be bettwen 2 :10 characters
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Elmail</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+            />
+            <div class="invalid-feedback">
+              your email should be correct
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              placeholder="Phone"
+            />
+            <div class="invalid-feedback">
+              your phone should be Number
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>zip code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zip"
+              placeholder="Zip Code"
+            />
+            <div class="invalid-feedback">
+              zipcode should be Number and 5 numbers
+            </div>
+          </div>
+        </span>
       </div>
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Save changes
+        </button>
       </div>
     </div>
   </div>
@@ -30,7 +112,7 @@
       <th style="width: 30%">Email</th>
       <th style="width: 30%">Role</th>
       <th style="width: 30%">Salary</th>
-      <th style="width: 90%">Contact No</th>
+      <th style="width: 90%">ContactNo</th>
       <th style="width: 10%"></th>
     </tr>
   </thead>
@@ -39,14 +121,23 @@
       <td>{{user.title}} {{user.firstName}} {{user.lastName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
-      <td> </td>
-      <td> </td>
+      <td></td>
+      <td></td>
       <td style="white-space: nowrap">
-        <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-        <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
-                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!user.isDeleting">Delete</span>
-                </button>
+        <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1"
+          >Edit</a
+        >
+        <button
+          (click)="deleteUser(user.id)"
+          class="btn btn-sm btn-danger btn-delete-user"
+          [disabled]="user.isDeleting"
+        >
+          <span
+            *ngIf="user.isDeleting"
+            class="spinner-border spinner-border-sm"
+          ></span>
+          <span *ngIf="!user.isDeleting">Delete</span>
+        </button>
       </td>
     </tr>
     <tr *ngIf="!users">
